@@ -7,3 +7,6 @@ class MessageForm(FlaskForm):
     # author (string) validator should make this textbox required
     # message (string) validator should make this textbox required
     # submit (button) text should say 'Send' 
+    author = StringField('Author', validators = [DataRequired()])
+    message = StringField('Message', validators = [DataRequired()]))
+    submit = SubmitField('Send')

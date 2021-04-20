@@ -6,6 +6,7 @@ from app.forms import MessageForm
 from app.models import User, Messages
 
 # add route '/' and also add the two methods to handle request: 'GET' and 'POST'
+@myapp_obj.route("/", methods=['POST', 'GET'])
 def home():
     form=MessageForm()
     if form.validate_on_submit():
@@ -18,6 +19,14 @@ def home():
     # create a list of dictionaries with the following structure
     # [{'author':'carlos', 'message':'Yo! Where you at?!'},
     #  {'author':'Jerry', 'message':'Home. You?'}]
+    {
+        'author' : 'carlos',
+        'message' : 'Yo! Where you at?!'
+    },
+    {
+        'author' : 'Jerry',
+        'message' : 'Home. You?'
+    }
 
     return render_template('home.html', posts=posts, form=form)
 
