@@ -1,13 +1,16 @@
 from app import db
 
+"""
+Where tables are stored and where variables get defined and specified of 
+their types. 
+"""
 class User(db.Model):
     # have the following columns
     # id (int)
-    # author (string, unique, can't be null)
-    # message (linkd to Messages table)
     id=db.Column(db.Integer, primary_key=True)
+    # author (string, unique, can't be null)
     author=db.Column(db.String, unique=True, nullable=False)
-
+    # message (linkd to Messages table)
     message = db.relationship('Messages', backref='author', lazy='dynamic')
     
     def __repr__(self):
@@ -16,10 +19,10 @@ class User(db.Model):
 class Messages(db.Model):
     # have the following columns
     # id (int)
-    # message (string, not unique, can't be null)
-    # user_id link to id (int)
     id = db.Column(db.Integer, primary_key=True)
+    # message (string, not unique, can't be null)
     message = db.Column(db.String, unique=False, nullable=False)
+    # user_id link to id (int)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))    
 
     # write __repr__ that outputs
