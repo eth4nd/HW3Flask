@@ -8,7 +8,7 @@ class User(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     author=db.Column(db.String, unique=True, nullable=False)
 
-    message = db.relationship('Message', backref='author', lazy='dynamic')
+    message = db.relationship('Messages', backref='author', lazy='dynamic')
     
     def __repr__(self):
         return f'<User {self.author}>'
