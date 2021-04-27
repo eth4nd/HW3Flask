@@ -41,8 +41,11 @@ def home():
         }
     ]
 
+    #searches for the whole message table 
     allmessages =  Messages.query.all()
+    #check to see if all the messages that were searched for are not null
     if allmessages is not None:
+        #loops through each of the messages and outputs it as the author message and the message content
         for newmessage in allmessages:   
             posts = posts + [
                 { 
